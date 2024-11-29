@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getMovieDetails } from '../../api/movies';
 import type { MovieFullDetail } from '../../types/movie';
 import {
   StyledDetailContainer,
   StyledHeader,
   StyledLoadingContainer,
-  StyledBackButton,
 } from './styled';
 import CastSection from './CastSection';
 import ReviewSection from './ReviewSection';
@@ -15,7 +14,6 @@ import VideoSection from './VideoSection';
 
 const MovieDetail = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
   const [movie, setMovie] = useState<MovieFullDetail | null>(null);
 
   useEffect(() => {
@@ -45,7 +43,6 @@ const MovieDetail = () => {
 
   return (
     <StyledDetailContainer>
-      <StyledBackButton onClick={() => navigate(-1)}>返回</StyledBackButton>
       <StyledHeader>
         <img
           src={

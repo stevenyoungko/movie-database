@@ -6,22 +6,6 @@ export const StyledDetailContainer = styled.div`
   padding: 0 1rem;
 `;
 
-export const StyledBackButton = styled.button`
-  padding: 8px 16px;
-  margin: 24px 0;
-  cursor: pointer;
-  border-radius: 4px;
-  border: none;
-  background-color: #333;
-  color: white;
-  font-size: 1rem;
-  transition: background-color 0.2s ease;
-
-  &:hover {
-    background-color: #555;
-  }
-`;
-
 export const StyledHeader = styled.div`
   display: grid;
   grid-template-columns: 300px 1fr;
