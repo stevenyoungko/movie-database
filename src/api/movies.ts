@@ -1,15 +1,9 @@
 import apiInstance from '../utils/api';
+import type { MovieFullDetail, Movie } from '../types/movie';
 
 interface MovieResponse {
   results: Movie[];
   total_pages: number;
-}
-
-interface Movie {
-  id: number;
-  title: string;
-  poster_path: string | null;
-  release_date: string;
 }
 
 export const getSearchMovie = async (
@@ -20,6 +14,15 @@ export const getSearchMovie = async (
     params: {
       query: searchQuery,
       page: pageNum,
+    },
+  });
+  return response.data;
+};
+
+export const getMovieDetails = async (id: string): Promise<MovieFullDetail> => {
+  const response = await apiInstance.get(`/movie/${id}`, {
+    params: {
+      append_to_response: 'credits',
     },
   });
   return response.data;

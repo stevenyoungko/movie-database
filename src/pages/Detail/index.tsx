@@ -1,9 +1,11 @@
-function MovieDetail() {
+import MovieDetail from '../../components/MovieDetail';
+
+function DetailPage() {
   return (
-    <div className="movie-detail">
-      <h2>電影詳情</h2>
+    <div className="detail-page">
+      <MovieDetail />
     </div>
   );
 }
 
-export default MovieDetail;
+export default DetailPage;

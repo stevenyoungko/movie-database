@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyledSearchForm, StyledSearchPrompt } from './styled';
 import { getSearchMovie } from '../../api/movies';
 import MovieList from '../MovieList';
-import { Movie } from '../../types/movie';
+import type { Movie } from '../../types/movie';
 
 const MovieSearch = () => {
   const [query, setQuery] = useState('');
