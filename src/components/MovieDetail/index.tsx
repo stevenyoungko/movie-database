@@ -8,6 +8,7 @@ import {
   StyledSection,
   StyledCastList,
   StyledCastCard,
+  StyledLoadingContainer,
 } from './styled';
 
 const MovieDetail = () => {
@@ -28,7 +29,11 @@ const MovieDetail = () => {
   }, [id]);
 
   if (!movie) {
-    return <div>Loading...</div>;
+    return (
+      <StyledDetailContainer>
+        <StyledLoadingContainer>載入中...</StyledLoadingContainer>
+      </StyledDetailContainer>
+    );
   }
 
   const director = movie.credits.crew.find(
