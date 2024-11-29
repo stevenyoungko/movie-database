@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
+import Detail from './pages/Detail';
 import './App.css';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <main className="main-content">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/movies/:id" element={<Detail />} />
           </Routes>
         </main>
         <footer className="app-footer">

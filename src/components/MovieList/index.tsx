@@ -1,6 +1,7 @@
 import { StyledMovieGrid, StyledMovieCard, LoadingSpinner } from './styled';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Movie } from '../../types/movie';
+import { Link } from 'react-router-dom';
 
 interface MovieListProps {
   movies: Movie[];
@@ -18,18 +19,20 @@ const MovieList = ({ movies, hasMore, loadMore }: MovieListProps) => {
     >
       <StyledMovieGrid>
         {movies.map((movie) => (
-          <StyledMovieCard key={movie.id}>
-            <img
-              src={
-                movie.poster_path
-                  ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-                  : 'https://via.placeholder.com/500x750?text=No+Image'
-              }
-              alt={movie.title}
-            />
-            <h3>{movie.title}</h3>
-            <p>{movie.release_date?.split('-')[0]}</p>
-          </StyledMovieCard>
+          <Link to={`/movies/${movie.id}`} key={movie.id}>
+            <StyledMovieCard>
+              <img
+                src={
+                  movie.poster_path
+                    ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                    : 'https://via.placeholder.com/500x750?text=No+Image'
+                }
+                alt={movie.title}
+              />
+              <h3>{movie.title}</h3>
+              <p>{movie.release_date?.split('-')[0]}</p>
+            </StyledMovieCard>
+          </Link>
         ))}
       </StyledMovieGrid>
     </InfiniteScroll>
