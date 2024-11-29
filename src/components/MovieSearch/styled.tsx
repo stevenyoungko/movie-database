@@ -1,15 +1,5 @@
 import styled from 'styled-components';
 
-export const StyledSearchContainer = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-
-  @media (max-width: 768px) {
-    padding: 1rem;
-  }
-`;
-
 export const StyledSearchForm = styled.form`
   display: flex;
   margin-bottom: 2rem;

@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
-import {
-  StyledSearchForm,
-  StyledSearchContainer,
-  StyledSearchPrompt,
-} from './styled';
+import { StyledSearchForm, StyledSearchPrompt } from './styled';
 import { getSearchMovie } from '../../api/movies';
 import MovieList from '../MovieList';
 import { Movie } from '../../types/movie';
@@ -42,7 +38,7 @@ const MovieSearch = () => {
   };
 
   return (
-    <StyledSearchContainer>
+    <>
       <StyledSearchForm onSubmit={handleSearch}>
         <input
           type="text"
@@ -57,7 +53,7 @@ const MovieSearch = () => {
       ) : (
         <MovieList movies={movies} hasMore={hasMore} loadMore={loadMore} />
       )}
-    </StyledSearchContainer>
+    </>
   );
 };
 
