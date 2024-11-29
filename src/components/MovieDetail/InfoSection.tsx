@@ -1,6 +1,6 @@
 import type { MovieFullDetail } from '../../types/movie';
 
-const MovieInfo = ({
+const InfoSection = ({
   movie,
   director,
 }: {
@@ -32,4 +32,4 @@ const MovieInfo = ({
   </div>
 );
 
-export default MovieInfo;
+export default InfoSection;

@@ -12,7 +12,7 @@ interface AuthorDetails {
   rating: number | null;
 }
 
-interface Review {
+export interface Review {
   id: string;
   author: string;
   author_details: AuthorDetails;
@@ -20,6 +20,13 @@ interface Review {
   created_at: string;
   updated_at: string;
   url: string;
+}
+
+export interface Cast {
+  id: number;
+  name: string;
+  profile_path: string | null;
+  character: string;
 }
 
 export interface MovieFullDetail {
@@ -30,12 +37,7 @@ export interface MovieFullDetail {
   genres: { id: number; name: string }[];
   runtime: number;
   credits: {
-    cast: {
-      id: number;
-      name: string;
-      profile_path: string | null;
-      character: string;
-    }[];
+    cast: Cast[];
     crew: { id: number; name: string; job: string }[];
   };
   reviews: {
