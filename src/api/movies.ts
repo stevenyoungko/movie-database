@@ -22,7 +22,7 @@ export const getSearchMovie = async (
 export const getMovieDetails = async (id: string): Promise<MovieFullDetail> => {
   const response = await apiInstance.get(`/movie/${id}`, {
     params: {
-      append_to_response: 'credits',
+      append_to_response: 'credits,reviews',
     },
   });
   return response.data;

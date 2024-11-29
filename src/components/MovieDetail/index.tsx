@@ -9,8 +9,11 @@ import {
   StyledCastList,
   StyledCastCard,
   StyledLoadingContainer,
+  StyledReviewList,
+  StyledReviewCard,
 } from './styled';
 import MovieInfo from './MovieInfo';
+
 const MovieDetail = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState<MovieFullDetail | null>(null);
@@ -71,6 +74,28 @@ const MovieDetail = () => {
             </StyledCastCard>
           ))}
         </StyledCastList>
+      </StyledSection>
+      <StyledSection>
+        <h2>評論</h2>
+        <StyledReviewList>
+          {movie.reviews.results.length > 0 ? (
+            movie.reviews.results.slice(0, 5).map((review) => (
+              <StyledReviewCard key={review.id}>
+                <h3>{review.author}</h3>
+                <p>
+                  {review.content.length > 300
+                    ? `${review.content.substring(0, 300)}...`
+                    : review.content}
+                </p>
+                <small>
+                  {new Date(review.created_at).toLocaleDateString()}
+                </small>
+              </StyledReviewCard>
+            ))
+          ) : (
+            <p>目前沒有評論</p>
+          )}
+        </StyledReviewList>
       </StyledSection>
     </StyledDetailContainer>
   );

@@ -45,6 +45,7 @@ export const StyledHeader = styled.div`
 `;
 
 export const StyledSection = styled.section`
+  margin-bottom: 2rem;
   h2 {
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
@@ -107,4 +108,30 @@ export const StyledLoadingContainer = styled.div`
   padding: 3rem;
   font-size: 1.2rem;
   color: #666;
+`;
+
+export const StyledReviewList = styled.div`
+  display: grid;
+  gap: 20px;
+  margin-top: 20px;
+`;
+
+export const StyledReviewCard = styled.div`
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 8px;
+
+  h3 {
+    margin: 0 0 10px 0;
+    color: #333;
+  }
+
+  p {
+    margin: 0 0 10px 0;
+    line-height: 1.6;
+  }
+
+  small {
+    color: #666;
+  }
 `;
