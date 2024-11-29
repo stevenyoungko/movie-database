@@ -1,59 +1,27 @@
-import React, { useState } from 'react';
-import { StyledSearchForm, StyledSearchPrompt } from './styled';
-import { getSearchMovie } from '../../api/movies';
-import MovieList from '../MovieList';
-import type { Movie } from '../../types/movie';
+import { StyledSearchForm } from './styled';
 
-const MovieSearch = () => {
-  const [query, setQuery] = useState('');
-  const [movies, setMovies] = useState<Movie[]>([]);
-  const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
-  const [hasSearched, setHasSearched] = useState(false);
+interface MovieSearchProps {
+  onSearch: (query: string) => void;
+  query: string;
+  setQuery: (query: string) => void;
+}
 
-  const fetchMovies = async (searchQuery: string, pageNum: number) => {
-    try {
-      const { results, total_pages } = await getSearchMovie(
-        searchQuery,
-        pageNum
-      );
-      setMovies((prev) => (pageNum === 1 ? results : [...prev, ...results]));
-      setHasMore(pageNum < total_pages);
-    } catch (error) {
-      console.error('Error fetching movies:', error);
-    }
-  };
-
+const MovieSearch = ({ onSearch, query, setQuery }: MovieSearchProps) => {
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setPage(1);
-    setHasSearched(true);
-    fetchMovies(query, 1);
-  };
-
-  const loadMore = () => {
-    const nextPage = page + 1;
-    setPage(nextPage);
-    fetchMovies(query, nextPage);
+    onSearch(query);
   };
 
   return (
-    <>
-      <StyledSearchForm onSubmit={handleSearch}>
-        <input
-          type="text"
-          placeholder="搜尋電影..."
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-        <button type="submit">搜尋</button>
-      </StyledSearchForm>
-      {!hasSearched ? (
-        <StyledSearchPrompt>請輸入關鍵字開始搜尋電影</StyledSearchPrompt>
-      ) : (
-        <MovieList movies={movies} hasMore={hasMore} loadMore={loadMore} />
-      )}
-    </>
+    <StyledSearchForm onSubmit={handleSearch}>
+      <input
+        type="text"
+        placeholder="搜尋電影..."
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+      />
+      <button type="submit">搜尋</button>
+    </StyledSearchForm>
   );
 };
 
