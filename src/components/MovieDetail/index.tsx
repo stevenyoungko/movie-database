@@ -10,7 +10,7 @@ import {
   StyledCastCard,
   StyledLoadingContainer,
 } from './styled';
-
+import MovieInfo from './MovieInfo';
 const MovieDetail = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState<MovieFullDetail | null>(null);
@@ -51,29 +51,7 @@ const MovieDetail = () => {
           }
           alt={movie.title}
         />
-        <div>
-          <h1>{movie.title}</h1>
-          <p>
-            <strong>上映日期：</strong>
-            {movie.release_date}
-          </p>
-          <p>
-            <strong>片長：</strong>
-            {movie.runtime} 分鐘
-          </p>
-          <p>
-            <strong>類型：</strong>
-            {movie.genres.map((genre) => genre.name).join(', ')}
-          </p>
-          <p>
-            <strong>導演：</strong>
-            {director?.name || '未知'}
-          </p>
-          <p>
-            <strong>劇情簡介：</strong>
-            {movie.overview}
-          </p>
-        </div>
+        <MovieInfo movie={movie} director={director} />
       </StyledHeader>
       <StyledSection>
         <h2>演員陣容</h2>
