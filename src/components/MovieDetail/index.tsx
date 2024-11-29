@@ -10,6 +10,7 @@ import {
 import CastSection from './CastSection';
 import ReviewSection from './ReviewSection';
 import InfoSection from './InfoSection';
+import VideoSection from './VideoSection';
 
 const MovieDetail = () => {
   const { id } = useParams();
@@ -53,6 +54,7 @@ const MovieDetail = () => {
         />
         <InfoSection movie={movie} director={director} />
       </StyledHeader>
+      <VideoSection videos={movie.videos.results} />
       <CastSection cast={movie.credits.cast} />
       <ReviewSection reviews={movie.reviews.results} />
     </StyledDetailContainer>

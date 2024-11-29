@@ -29,6 +29,19 @@ export interface Cast {
   character: string;
 }
 
+export interface Video {
+  iso_639_1: string;
+  iso_3166_1: string;
+  name: string;
+  key: string;
+  site: string;
+  size: number;
+  type: string;
+  official: boolean;
+  published_at: string;
+  id: string;
+}
+
 export interface MovieFullDetail {
   title: string;
   overview: string;
@@ -42,5 +55,8 @@ export interface MovieFullDetail {
   };
   reviews: {
     results: Review[];
+  };
+  videos: {
+    results: Video[];
   };
 }
