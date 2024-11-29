@@ -1,21 +1,12 @@
 import React, { useState } from 'react';
 import {
   StyledSearchForm,
-  StyledMovieGrid,
-  StyledMovieCard,
   StyledSearchContainer,
-  LoadingSpinner,
   StyledSearchPrompt,
 } from './styled';
 import { getSearchMovie } from '../../api/movies';
-import InfiniteScroll from 'react-infinite-scroll-component';
-
-interface Movie {
-  id: number;
-  title: string;
-  poster_path: string | null;
-  release_date: string;
-}
+import MovieList from '../MovieList';
+import { Movie } from '../../types/movie';
 
 const MovieSearch = () => {
   const [query, setQuery] = useState('');
@@ -64,29 +55,7 @@ const MovieSearch = () => {
       {!hasSearched ? (
         <StyledSearchPrompt>請輸入關鍵字開始搜尋電影</StyledSearchPrompt>
       ) : (
-        <InfiniteScroll
-          dataLength={movies.length}
-          next={loadMore}
-          hasMore={hasMore}
-          loader={<LoadingSpinner>載入中...</LoadingSpinner>}
-        >
-          <StyledMovieGrid>
-            {movies.map((movie) => (
-              <StyledMovieCard key={movie.id}>
-                <img
-                  src={
-                    movie.poster_path
-                      ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-                      : 'https://via.placeholder.com/500x750?text=No+Image'
-                  }
-                  alt={movie.title}
-                />
-                <h3>{movie.title}</h3>
-                <p>{movie.release_date?.split('-')[0]}</p>
-              </StyledMovieCard>
-            ))}
-          </StyledMovieGrid>
-        </InfiniteScroll>
+        <MovieList movies={movies} hasMore={hasMore} loadMore={loadMore} />
       )}
     </StyledSearchContainer>
   );
