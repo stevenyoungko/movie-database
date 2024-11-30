@@ -1,43 +1,19 @@
-import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getMovieDetails } from '../../api/movies';
-import type { MovieFullDetail } from '../../types/movie';
-import {
-  StyledDetailContainer,
-  StyledHeader,
-  StyledLoadingContainer,
-  StyledButton,
-} from './styled';
+import { useMovieDetail } from '../../hooks/useMovieDetail';
+import { useFavorite } from '../../hooks/useFavorite';
+import { StyledDetailContainer, StyledHeader, StyledButton } from './styled';
 import CastSection from './CastSection';
 import ReviewSection from './ReviewSection';
 import InfoSection from './InfoSection';
 import VideoSection from './VideoSection';
-import { useFavorite } from '../../hooks/useFavorite';
 
 const MovieDetail = () => {
   const { id } = useParams();
-  const [movie, setMovie] = useState<MovieFullDetail | null>(null);
+  const { movie } = useMovieDetail(id!);
   const { isFavorite, toggleFavorite } = useFavorite(id);
 
-  useEffect(() => {
-    const fetchMovieDetails = async () => {
-      try {
-        const data = await getMovieDetails(id!);
-        setMovie(data);
-      } catch (error) {
-        console.error('Error fetching movie details:', error);
-      }
-    };
-
-    fetchMovieDetails();
-  }, [id]);
-
   if (!movie) {
-    return (
-      <StyledDetailContainer>
-        <StyledLoadingContainer>載入中...</StyledLoadingContainer>
-      </StyledDetailContainer>
-    );
+    return null;
   }
 
   const director = movie.credits.crew.find(
