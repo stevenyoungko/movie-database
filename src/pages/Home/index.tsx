@@ -4,7 +4,7 @@ import { StyledSearchPrompt } from '../../components/MovieSearch/styled';
 import { useState } from 'react';
 import type { Movie } from '../../types/movie';
 import { getSearchMovie } from '../../api/movies';
-import { StyledWatchListLink } from './styled';
+import { StyledWatchListLink } from '../WatchList/styled';
 
 const Home = () => {
   const [movies, setMovies] = useState<Movie[]>([]);

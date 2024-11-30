@@ -1,5 +1,13 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import {
+  StyledContainer,
+  StyledTitle,
+  StyledMovieList,
+  StyledMovieItem,
+  StyledMovieLink,
+  StyledEmptyMessage,
+  StyledWatchButton,
+} from './styled';
 import type { Movie } from '../../types/movie';
 
 const WatchList = () => {
@@ -13,20 +21,23 @@ const WatchList = () => {
   }, []);
 
   return (
-    <div>
-      <h1>我的待看清單</h1>
+    <StyledContainer>
+      <StyledTitle>我的待看清單</StyledTitle>
       {favorites.length > 0 ? (
-        <ul>
+        <StyledMovieList>
           {favorites.map((movie) => (
-            <li key={movie.id}>
-              <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
-            </li>
+            <StyledMovieItem key={movie.id}>
+              {movie.title}
+              <StyledMovieLink to={`/movies/${movie.id}`}>
+                <StyledWatchButton>查看</StyledWatchButton>
+              </StyledMovieLink>
+            </StyledMovieItem>
           ))}
-        </ul>
+        </StyledMovieList>
       ) : (
-        <p>你的待看清單是空的。</p>
+        <StyledEmptyMessage>你的待看清單是空的。</StyledEmptyMessage>
       )}
-    </div>
+    </StyledContainer>
   );
 };
 

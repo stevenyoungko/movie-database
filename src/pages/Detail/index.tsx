@@ -1,10 +1,12 @@
 import MovieDetail from '../../components/MovieDetail';
+import { StyledWatchListLink } from '../WatchList/styled';
 
 function DetailPage() {
   return (
-    <div className="detail-page">
+    <>
+      <StyledWatchListLink to="/watch_list">我的收藏清單</StyledWatchListLink>
       <MovieDetail />
-    </div>
+    </>
   );
 }
 
