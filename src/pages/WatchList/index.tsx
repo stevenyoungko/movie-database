@@ -9,6 +9,7 @@ import {
   StyledWatchButton,
 } from './styled';
 import type { Movie } from '../../types/movie';
+import { StyledHomeLink } from '../Home/styled';
 
 const WatchList = () => {
   const [favorites, setFavorites] = useState<Movie[]>([]);
@@ -21,23 +22,26 @@ const WatchList = () => {
   }, []);
 
   return (
-    <StyledContainer>
-      <StyledTitle>我的待看清單</StyledTitle>
-      {favorites.length > 0 ? (
-        <StyledMovieList>
-          {favorites.map((movie) => (
-            <StyledMovieItem key={movie.id}>
-              {movie.title}
-              <StyledMovieLink to={`/movies/${movie.id}`}>
-                <StyledWatchButton>查看</StyledWatchButton>
-              </StyledMovieLink>
-            </StyledMovieItem>
-          ))}
-        </StyledMovieList>
-      ) : (
-        <StyledEmptyMessage>你的待看清單是空的。</StyledEmptyMessage>
-      )}
-    </StyledContainer>
+    <>
+      <StyledHomeLink to="/">回首頁</StyledHomeLink>
+      <StyledContainer>
+        <StyledTitle>我的待看清單</StyledTitle>
+        {favorites.length > 0 ? (
+          <StyledMovieList>
+            {favorites.map((movie) => (
+              <StyledMovieItem key={movie.id}>
+                {movie.title}
+                <StyledMovieLink to={`/movies/${movie.id}`}>
+                  <StyledWatchButton>查看</StyledWatchButton>
+                </StyledMovieLink>
+              </StyledMovieItem>
+            ))}
+          </StyledMovieList>
+        ) : (
+          <StyledEmptyMessage>你的待看清單是空的。</StyledEmptyMessage>
+        )}
+      </StyledContainer>
+    </>
   );
 };
 

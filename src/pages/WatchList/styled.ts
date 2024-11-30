@@ -80,7 +80,7 @@ export const StyledWatchButton = styled.button`
 `;
 
 export const StyledWatchListLink = styled(Link)`
-  position: fixed;
+  position: absolute;
   top: 20px;
   right: 20px;
   padding: 10px 20px;
