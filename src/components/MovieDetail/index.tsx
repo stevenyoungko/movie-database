@@ -6,15 +6,18 @@ import {
   StyledDetailContainer,
   StyledHeader,
   StyledLoadingContainer,
+  StyledButton,
 } from './styled';
 import CastSection from './CastSection';
 import ReviewSection from './ReviewSection';
 import InfoSection from './InfoSection';
 import VideoSection from './VideoSection';
+import { useFavorite } from '../../hooks/useFavorite';
 
 const MovieDetail = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState<MovieFullDetail | null>(null);
+  const { isFavorite, toggleFavorite } = useFavorite(id);
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -53,6 +56,9 @@ const MovieDetail = () => {
           alt={movie.title}
         />
         <InfoSection movie={movie} director={director} />
+        <StyledButton onClick={toggleFavorite}>
+          {isFavorite ? '移除收藏' : '加入收藏'}
+        </StyledButton>
       </StyledHeader>
       <VideoSection videos={movie.videos.results} />
       <CastSection cast={movie.credits.cast} />
