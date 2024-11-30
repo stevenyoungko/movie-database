@@ -2,30 +2,18 @@ import MovieSearch from '../../components/MovieSearch';
 import MovieList from '../../components/MovieList';
 import { StyledSearchPrompt } from '../../components/MovieSearch/styled';
 import { useState } from 'react';
-import type { Movie } from '../../types/movie';
-import { getSearchMovie } from '../../api/movies';
+import { useMovieSearch } from '../../hooks/useMovieSearch';
 import { StyledWatchListLink } from '../WatchList/styled';
 
 const Home = () => {
-  const [movies, setMovies] = useState<Movie[]>([]);
   const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
   const [hasSearched, setHasSearched] = useState(false);
   const [query, setQuery] = useState('');
+  const { movies, hasMore, fetchMovies, error } = useMovieSearch();
 
-  const fetchMovies = async (searchQuery: string, pageNum: number) => {
-    try {
-      const { results, total_pages } = await getSearchMovie(
-        searchQuery,
-        pageNum
-      );
-      setMovies((prev) => (pageNum === 1 ? results : [...prev, ...results]));
-      setHasMore(pageNum < total_pages);
-    } catch (error) {
-      console.error('Error fetching movies:', error);
-      throw error;
-    }
-  };
+  if (error) {
+    throw error;
+  }
 
   const handleSearch = (searchQuery: string) => {
     setPage(1);
