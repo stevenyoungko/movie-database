@@ -23,6 +23,7 @@ const Home = () => {
       setHasMore(pageNum < total_pages);
     } catch (error) {
       console.error('Error fetching movies:', error);
+      throw error;
     }
   };
 
