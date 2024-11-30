@@ -1,22 +1,35 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { getMovieDetails } from '../api/movies';
 import type { MovieFullDetail } from '../types/movie';
+import { useFetchData } from './useFetchData';
 
 export const useMovieDetail = (id: string) => {
-  const [movie, setMovie] = useState<MovieFullDetail | null>(null);
+  const {
+    data: movie,
+    setData: setMovie,
+    error,
+    setError,
+    loading,
+    setLoading,
+  } = useFetchData<MovieFullDetail>();
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
+      setLoading(true);
       try {
         const data = await getMovieDetails(id);
         setMovie(data);
+        setError(null);
       } catch (error) {
-        console.error('Error fetching movie details:', error);
+        setError(error as Error);
+        setMovie(null);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchMovieDetails();
-  }, [id]);
+  }, [id, setError, setLoading, setMovie]);
 
-  return { movie };
+  return { movie, error, loading };
 };

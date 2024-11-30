@@ -9,11 +9,15 @@ import VideoSection from './VideoSection';
 
 const MovieDetail = () => {
   const { id } = useParams();
-  const { movie } = useMovieDetail(id!);
+  const { movie, loading, error } = useMovieDetail(id!);
   const { isFavorite, toggleFavorite } = useFavorite(id, movie?.title);
 
-  if (!movie) {
-    return null;
+  if (error) {
+    throw error;
+  }
+
+  if (loading || !movie) {
+    return <div>載入中...</div>;
   }
 
   const director = movie.credits.crew.find(
