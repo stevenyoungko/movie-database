@@ -10,7 +10,7 @@ import VideoSection from './VideoSection';
 const MovieDetail = () => {
   const { id } = useParams();
   const { movie } = useMovieDetail(id!);
-  const { isFavorite, toggleFavorite } = useFavorite(id);
+  const { isFavorite, toggleFavorite } = useFavorite(id, movie?.title);
 
   if (!movie) {
     return null;

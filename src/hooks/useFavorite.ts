@@ -1,28 +1,37 @@
 import { useState, useEffect } from 'react';
 
-export const useFavorite = (movieId: string | undefined) => {
+export const useFavorite = (
+  movieId: string | undefined,
+  movieTitle: string | undefined
+) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
     if (!movieId) return;
 
     const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-    setIsFavorite(favorites.some((fav: number) => fav === Number(movieId)));
+    setIsFavorite(
+      favorites.some((fav: { id: number }) => fav.id === Number(movieId))
+    );
   }, [movieId]);
 
   const toggleFavorite = () => {
-    if (!movieId) return;
+    if (!movieId || !movieTitle) return;
 
     const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
 
     if (isFavorite) {
       const newFavorites = favorites.filter(
-        (fav: number) => fav !== Number(movieId)
+        (fav: { id: number }) => fav.id !== Number(movieId)
       );
+
       localStorage.setItem('favorites', JSON.stringify(newFavorites));
       setIsFavorite(false);
     } else {
-      favorites.push(Number(movieId));
+      favorites.push({
+        id: Number(movieId),
+        title: movieTitle,
+      });
       localStorage.setItem('favorites', JSON.stringify(favorites));
       setIsFavorite(true);
     }

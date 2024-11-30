@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Detail from './pages/Detail';
+import WatchList from './pages/WatchList';
 import './App.css';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/movies/:id" element={<Detail />} />
+            <Route path="/watch_list" element={<WatchList />} />
           </Routes>
         </main>
         <footer className="app-footer">

@@ -4,6 +4,7 @@ import { StyledSearchPrompt } from '../../components/MovieSearch/styled';
 import { useState } from 'react';
 import type { Movie } from '../../types/movie';
 import { getSearchMovie } from '../../api/movies';
+import { StyledWatchListLink } from './styled';
 
 const Home = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -39,6 +40,7 @@ const Home = () => {
 
   return (
     <>
+      <StyledWatchListLink to="/watch_list">我的收藏清單</StyledWatchListLink>
       <MovieSearch onSearch={handleSearch} query={query} setQuery={setQuery} />
       {!hasSearched ? (
         <StyledSearchPrompt>請輸入關鍵字開始搜尋電影</StyledSearchPrompt>
