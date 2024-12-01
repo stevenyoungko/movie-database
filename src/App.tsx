@@ -11,7 +11,7 @@ function App() {
     <Router>
       <div className="app-container">
         <header className="app-header">
-          <h1>🎬 Test 電影數據庫</h1>
+          <h1>🎬 電影數據庫</h1>
           <p className="subtitle">探索你最愛的電影</p>
         </header>
         <main className="main-content">
