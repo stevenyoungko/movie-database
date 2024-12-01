@@ -3,7 +3,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { Movie } from '../../types/movie';
 import { Link } from 'react-router-dom';
 
-interface MovieListProps {
+export interface MovieListProps {
   movies: Movie[];
   hasMore: boolean;
   loadMore: () => void;
