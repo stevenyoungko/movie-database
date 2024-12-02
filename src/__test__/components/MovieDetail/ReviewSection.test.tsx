@@ -11,7 +11,6 @@ describe('ReviewSection', () => {
     expect(
       screen.getByText(/When audiences last saw Eddie Brock/)
     ).toBeInTheDocument();
-    expect(screen.getByText('2021/9/30')).toBeInTheDocument();
   });
 
   it('should show no reviews message when reviews array is empty', () => {

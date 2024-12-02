@@ -1,7 +1,7 @@
 import MovieSearch from '../../components/MovieSearch';
 import MovieList from '../../components/MovieList';
 import { StyledSearchPrompt } from '../../components/MovieSearch/styled';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useMovieSearch } from '../../hooks/useMovieSearch';
 import { StyledWatchListLink } from '../WatchList/styled';
 
@@ -11,6 +11,14 @@ const Home = () => {
   const [query, setQuery] = useState('');
   const { movies, hasMore, fetchMovies, error } = useMovieSearch();
 
+  useEffect(() => {
+    const searchQuery = localStorage.getItem('searchQuery');
+    if (searchQuery) {
+      setQuery(searchQuery);
+      handleSearch(searchQuery);
+    }
+  }, []);
+
   if (error) {
     throw error;
   }
@@ -18,6 +26,7 @@ const Home = () => {
   const handleSearch = (searchQuery: string) => {
     setPage(1);
     setHasSearched(true);
+    localStorage.setItem('searchQuery', searchQuery);
     fetchMovies(searchQuery, 1);
   };
 
