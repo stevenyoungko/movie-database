@@ -4,7 +4,6 @@ import { getMovieDetails } from '../../api/movies';
 import { adaptMovieDetail } from '../../utils/adaptMovieDetail';
 import { mockMovieDetail } from '../../mocks/movie';
 
-// Mock dependencies
 jest.mock('../../api/movies');
 jest.mock('../../utils/adaptMovieDetail');
 

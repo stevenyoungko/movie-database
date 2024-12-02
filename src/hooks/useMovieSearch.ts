@@ -4,7 +4,7 @@ import { getSearchMovie } from '../api/movies';
 
 export const useMovieSearch = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
-  const [hasMore, setHasMore] = useState(true);
+  const [hasMore, setHasMore] = useState(false);
   const [error, setError] = useState<Error | null>(null);
 
   const fetchMovies = async (searchQuery: string, pageNum: number) => {
