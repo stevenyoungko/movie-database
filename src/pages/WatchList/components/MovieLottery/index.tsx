@@ -5,7 +5,7 @@ import {
   StyledMovieLink,
   StyledWatchButton,
 } from './styled';
-import type { Movie } from '../../types/movie';
+import type { Movie } from '../../../../types/movie';
 
 interface MovieLotteryProps {
   movies: Movie[];

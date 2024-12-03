@@ -12,7 +12,7 @@ import {
 import type { Movie } from '../../types/movie';
 import { StyledHomeLink } from '../Home/styled';
 import { IoMdArrowRoundUp, IoMdArrowRoundDown } from 'react-icons/io';
-import MovieLottery from '../../components/MovieLottery';
+import MovieLottery from './components/MovieLottery';
 
 const WatchList = () => {
   const [favorites, setFavorites] = useState<Movie[]>([]);
