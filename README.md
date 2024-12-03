@@ -21,6 +21,7 @@
 - Lint Staged
 - Jest (測試框架)
 - React Testing Library
+- Lighthouse CI
 
 ## 功能特點
 
