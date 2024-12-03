@@ -1,4 +1,9 @@
-import { StyledMovieGrid, StyledMovieCard, LoadingSpinner } from './styled';
+import {
+  StyledMovieGrid,
+  StyledMovieCard,
+  LoadingSpinner,
+  StyledNoMoviesMessage,
+} from './styled';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Movie } from '../../types/movie';
 import { Link } from 'react-router-dom';
@@ -10,6 +15,12 @@ export interface MovieListProps {
 }
 
 const MovieList = ({ movies, hasMore, loadMore }: MovieListProps) => {
+  if (!movies || movies.length === 0) {
+    return (
+      <StyledNoMoviesMessage>目前沒有符合條件的電影</StyledNoMoviesMessage>
+    );
+  }
+
   return (
     <InfiniteScroll
       dataLength={movies.length}

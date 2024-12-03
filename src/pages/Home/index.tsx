@@ -6,12 +6,13 @@ import { useState, useEffect } from 'react';
 import { useMovieSearch } from '../../hooks/useMovieSearch';
 import { useMovieSort } from '../../hooks/useMovieSort';
 import { StyledWatchListLink } from '../WatchList/styled';
+import { LoadingSpinner } from './styled';
 
 const Home = () => {
   const [page, setPage] = useState(1);
   const [hasSearched, setHasSearched] = useState(false);
   const [query, setQuery] = useState('');
-  const { movies, hasMore, fetchMovies, error } = useMovieSearch();
+  const { movies, hasMore, fetchMovies, error, isLoading } = useMovieSearch();
   const { sortBy, setSortBy, sortedMovies } = useMovieSort(movies);
 
   useEffect(() => {
@@ -40,22 +41,32 @@ const Home = () => {
     fetchMovies(query, nextPage);
   };
 
+  const renderContent = () => {
+    if (!hasSearched) {
+      return <StyledSearchPrompt>請輸入關鍵字開始搜尋電影</StyledSearchPrompt>;
+    }
+
+    if (isLoading) {
+      return <LoadingSpinner>載入中...</LoadingSpinner>;
+    }
+
+    return (
+      <>
+        <MovieSort value={sortBy} onChange={setSortBy} />
+        <MovieList
+          movies={sortedMovies}
+          hasMore={hasMore}
+          loadMore={loadMore}
+        />
+      </>
+    );
+  };
+
   return (
     <>
       <StyledWatchListLink to="/watch_list">我的收藏清單</StyledWatchListLink>
       <MovieSearch onSearch={handleSearch} query={query} setQuery={setQuery} />
-      {!hasSearched ? (
-        <StyledSearchPrompt>請輸入關鍵字開始搜尋電影</StyledSearchPrompt>
-      ) : (
-        <>
-          <MovieSort value={sortBy} onChange={setSortBy} />
-          <MovieList
-            movies={sortedMovies}
-            hasMore={hasMore}
-            loadMore={loadMore}
-          />
-        </>
-      )}
+      {renderContent()}
     </>
   );
 };

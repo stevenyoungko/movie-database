@@ -22,3 +22,9 @@ export const StyledHomeLink = styled(Link)`
     display: none;
   }
 `;
+
+export const LoadingSpinner = styled.div`
+  text-align: center;
+  padding: 2rem;
+  color: #007bff;
+`;

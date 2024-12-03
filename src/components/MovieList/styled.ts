@@ -64,3 +64,11 @@ export const LoadingSpinner = styled.div`
   padding: 2rem;
   color: #007bff;
 `;
+
+export const StyledNoMoviesMessage = styled.div`
+  width: 100%;
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+  font-size: 1.1rem;
+`;
