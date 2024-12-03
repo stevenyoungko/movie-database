@@ -14,6 +14,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -22,6 +23,16 @@ jobs:
 
       - name: Install Dependencies
         run: yarn install
+
+      - name: Run lighthouse mobile audit
+        run: yarn lhci:mobile
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+
+      - name: Run lighthouse desktop audit
+        run: yarn lhci:desktop
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
 
       - name: Run Tests
         run: yarn test

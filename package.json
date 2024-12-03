@@ -33,7 +33,9 @@
     "lint": "eslint \"**/*.{ts,tsx}\"",
     "lint:fix": "eslint \"**/*.{ts,tsx}\" --fix",
     "format": "prettier --write \"**/*.{ts,tsx,json,md}\"",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lhci:mobile": "lhci autorun",
+    "lhci:desktop": "lhci autorun --collect.settings.preset=desktop"
   },
   "eslintConfig": {
     "extends": [
@@ -54,6 +56,7 @@
     ]
   },
   "devDependencies": {
+    "@lhci/cli": "^0.14.0",
     "@typescript-eslint/eslint-plugin": "^8.16.0",
     "@typescript-eslint/parser": "^8.16.0",
     "eslint": "^8.56.0",
