@@ -1,4 +1,4 @@
-import { Video } from '../../types/movie';
+import { Video } from '../../../../types/movie';
 import { StyledSection, StyledVideoContainer, StyledIframe } from './styled';
 
 interface VideoSectionProps {

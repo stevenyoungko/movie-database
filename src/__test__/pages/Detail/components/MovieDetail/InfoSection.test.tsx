@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import InfoSection from '../../../components/MovieDetail/InfoSection';
-import { mockMovieDetail } from '../../../mocks/movie';
+import InfoSection from '../../../../../pages/Detail/components/MovieDetail/InfoSection';
+import { mockMovieDetail } from '../../../../../mocks/movie';
 
 describe('InfoSection', () => {
   it('should render movie information correctly', () => {

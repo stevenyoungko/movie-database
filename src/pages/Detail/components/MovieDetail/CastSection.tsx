@@ -1,4 +1,4 @@
-import type { Cast } from '../../types/movie';
+import type { Cast } from '../../../../types/movie';
 import { StyledSection, StyledCastList, StyledCastCard } from './styled';
 
 interface CastSectionProps {

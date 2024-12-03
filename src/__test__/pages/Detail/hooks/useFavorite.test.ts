@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react';
-import { useFavorite } from '../../hooks/useFavorite';
+import { useFavorite } from '../../../../pages/Detail/hooks/useFavorite';
 
 describe('useFavorite', () => {
   beforeEach(() => {

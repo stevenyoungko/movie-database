@@ -1,4 +1,4 @@
-import MovieDetail from '../../components/MovieDetail';
+import MovieDetail from './components/MovieDetail';
 import { StyledWatchListLink } from '../WatchList/styled';
 import { StyledHomeLink } from '../Home/styled';
 

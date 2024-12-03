@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import VideoSection from '../../../components/MovieDetail/VideoSection';
-import type { Video } from '../../../types/movie';
+import VideoSection from '../../../../../pages/Detail/components/MovieDetail/VideoSection';
+import type { Video } from '../../../../../types/movie';
 
 describe('VideoSection', () => {
   it('renders official YouTube trailer when available', () => {

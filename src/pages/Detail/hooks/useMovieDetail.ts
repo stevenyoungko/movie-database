@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import { getMovieDetails } from '../api/movies';
-import type { MovieFullDetail } from '../types/movie';
-import { useFetchData } from './useFetchData';
-import { adaptMovieDetail } from '../utils/adaptMovieDetail';
+import { getMovieDetails } from '../../../api/movies';
+import type { MovieFullDetail } from '../../../types/movie';
+import { useFetchData } from '../../../hooks/useFetchData';
+import { adaptMovieDetail } from '../../../utils/adaptMovieDetail';
 
 export const useMovieDetail = (id: string) => {
   const {

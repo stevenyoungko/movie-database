@@ -1,11 +1,11 @@
 import { renderHook, waitFor } from '@testing-library/react';
-import { useMovieDetail } from '../../hooks/useMovieDetail';
-import { getMovieDetails } from '../../api/movies';
-import { adaptMovieDetail } from '../../utils/adaptMovieDetail';
-import { mockMovieDetail } from '../../mocks/movie';
+import { useMovieDetail } from '../../../../pages/Detail/hooks/useMovieDetail';
+import { getMovieDetails } from '../../../../api/movies';
+import { adaptMovieDetail } from '../../../../utils/adaptMovieDetail';
+import { mockMovieDetail } from '../../../../mocks/movie';
 
-jest.mock('../../api/movies');
-jest.mock('../../utils/adaptMovieDetail');
+jest.mock('../../../../api/movies');
+jest.mock('../../../../utils/adaptMovieDetail');
 
 const mockGetMovieDetails = getMovieDetails as jest.Mock;
 const mockAdaptMovieDetail = adaptMovieDetail as jest.Mock;

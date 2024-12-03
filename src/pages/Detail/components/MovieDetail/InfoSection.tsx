@@ -1,4 +1,4 @@
-import type { MovieFullDetail } from '../../types/movie';
+import type { MovieFullDetail } from '../../../../types/movie';
 
 const InfoSection = ({
   movie,

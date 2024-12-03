@@ -1,4 +1,4 @@
-import type { Review } from '../../types/movie';
+import type { Review } from '../../../../types/movie';
 import { StyledSection, StyledReviewList, StyledReviewCard } from './styled';
 
 interface ReviewSectionProps {

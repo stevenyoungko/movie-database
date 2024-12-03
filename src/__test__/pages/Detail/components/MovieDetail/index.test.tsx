@@ -1,12 +1,12 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import MovieDetail from '../../../components/MovieDetail';
-import { mockMovieDetail } from '../../../mocks/movie';
-import * as useMovieDetailHook from '../../../hooks/useMovieDetail';
-import * as useFavoriteHook from '../../../hooks/useFavorite';
+import MovieDetail from '../../../../../pages/Detail/components/MovieDetail';
+import { mockMovieDetail } from '../../../../../mocks/movie';
+import * as useMovieDetailHook from '../../../../../pages/Detail/hooks/useMovieDetail';
+import * as useFavoriteHook from '../../../../../pages/Detail/hooks/useFavorite';
 
-jest.mock('../../../hooks/useMovieDetail');
-jest.mock('../../../hooks/useFavorite');
+jest.mock('../../../../../pages/Detail/hooks/useMovieDetail');
+jest.mock('../../../../../pages/Detail/hooks/useFavorite');
 
 describe('MovieDetail', () => {
   const mockUseMovieDetail = useMovieDetailHook.useMovieDetail as jest.Mock;

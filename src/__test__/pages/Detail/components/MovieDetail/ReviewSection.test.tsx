@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import ReviewSection from '../../../components/MovieDetail/ReviewSection';
-import { mockMovieDetail } from '../../../mocks/movie';
+import ReviewSection from '../../../../../pages/Detail/components/MovieDetail/ReviewSection';
+import { mockMovieDetail } from '../../../../../mocks/movie';
 
 describe('ReviewSection', () => {
   it('should render reviews correctly', () => {

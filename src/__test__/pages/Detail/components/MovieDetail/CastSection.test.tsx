@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import CastSection from '../../../components/MovieDetail/CastSection';
-import { mockMovieDetail } from '../../../mocks/movie';
+import CastSection from '../../../../../pages/Detail/components/MovieDetail/CastSection';
+import { mockMovieDetail } from '../../../../../mocks/movie';
 
 describe('CastSection', () => {
   it('should render cast information correctly', () => {
