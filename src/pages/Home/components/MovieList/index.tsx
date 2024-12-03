@@ -5,7 +5,7 @@ import {
   StyledNoMoviesMessage,
 } from './styled';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { Movie } from '../../types/movie';
+import { Movie } from '../../../../types/movie';
 import { Link } from 'react-router-dom';
 
 export interface MovieListProps {

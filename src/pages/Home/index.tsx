@@ -1,10 +1,10 @@
-import MovieSearch from '../../components/MovieSearch';
-import MovieList from '../../components/MovieList';
-import MovieSort from '../../components/MovieSort';
-import { StyledSearchPrompt } from '../../components/MovieSearch/styled';
+import MovieSearch from './components/MovieSearch';
+import MovieList from './components/MovieList';
+import MovieSort from './components/MovieSort';
+import { StyledSearchPrompt } from './components/MovieSearch/styled';
 import { useState, useEffect } from 'react';
-import { useMovieSearch } from '../../hooks/useMovieSearch';
-import { useMovieSort } from '../../hooks/useMovieSort';
+import { useMovieSearch } from './hooks/useMovieSearch';
+import { useMovieSort } from './hooks/useMovieSort';
 import { StyledWatchListLink } from '../WatchList/styled';
 import { LoadingSpinner } from './styled';
 

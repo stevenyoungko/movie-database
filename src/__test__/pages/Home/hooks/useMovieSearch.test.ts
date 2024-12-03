@@ -1,9 +1,9 @@
 import { renderHook, act } from '@testing-library/react';
-import { useMovieSearch } from '../../hooks/useMovieSearch';
-import { getSearchMovie } from '../../api/movies';
-import { mockMovies } from '../../mocks/movie';
+import { useMovieSearch } from '../../../../pages/Home/hooks/useMovieSearch';
+import { getSearchMovie } from '../../../../api/movies';
+import { mockMovies } from '../../../../mocks/movie';
 
-jest.mock('../../api/movies');
+jest.mock('../../../../api/movies');
 const mockGetSearchMovie = getSearchMovie as jest.Mock;
 
 describe('useMovieSearch', () => {

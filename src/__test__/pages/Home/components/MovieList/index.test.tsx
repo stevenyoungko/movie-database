@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import MovieList from '../../../components/MovieList';
-import type { MovieListProps } from '../../../components/MovieList';
+import MovieList from '../../../../../pages/Home/components/MovieList';
+import type { MovieListProps } from '../../../../../pages/Home/components/MovieList';
 import { BrowserRouter } from 'react-router-dom';
-import { mockMovies } from '../../../mocks/movie';
+import { mockMovies } from '../../../../../mocks/movie';
 
 const renderMovieList = (props: MovieListProps) => {
   return render(

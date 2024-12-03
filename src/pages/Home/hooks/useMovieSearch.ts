@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Movie } from '../types/movie';
-import { getSearchMovie } from '../api/movies';
+import { Movie } from '../../../types/movie';
+import { getSearchMovie } from '../../../api/movies';
 
 export const useMovieSearch = () => {
   const [movies, setMovies] = useState<Movie[]>([]);

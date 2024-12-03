@@ -5,7 +5,7 @@ import { mockMovies } from '../../../mocks/movie';
 import userEvent from '@testing-library/user-event';
 
 // Mock the custom hook
-jest.mock('../../../hooks/useMovieSearch', () => ({
+jest.mock('../../../pages/Home/hooks/useMovieSearch', () => ({
   useMovieSearch: () => ({
     movies: mockMovies,
     hasMore: true,
