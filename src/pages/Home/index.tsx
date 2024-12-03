@@ -31,6 +31,7 @@ const Home = () => {
     setHasSearched(true);
     localStorage.setItem('searchQuery', searchQuery);
     fetchMovies(searchQuery, 1);
+    setQuery('');
   };
 
   const loadMore = () => {

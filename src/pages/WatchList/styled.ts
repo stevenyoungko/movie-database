@@ -91,6 +91,10 @@ export const StyledWatchListLink = styled(Link)`
   &:hover {
     background-color: #34495e;
   }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const StyledSortButton = styled.button`
