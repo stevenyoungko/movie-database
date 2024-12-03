@@ -6,13 +6,12 @@ import { useState, useEffect } from 'react';
 import { useMovieSearch } from './hooks/useMovieSearch';
 import { useMovieSort } from './hooks/useMovieSort';
 import { StyledWatchListLink } from '../WatchList/styled';
-import { LoadingSpinner } from './styled';
 
 const Home = () => {
   const [page, setPage] = useState(1);
   const [hasSearched, setHasSearched] = useState(false);
   const [query, setQuery] = useState('');
-  const { movies, hasMore, fetchMovies, error, isLoading } = useMovieSearch();
+  const { movies, hasMore, fetchMovies, error } = useMovieSearch();
   const { sortBy, setSortBy, sortedMovies } = useMovieSort(movies);
 
   useEffect(() => {
@@ -32,7 +31,6 @@ const Home = () => {
     setHasSearched(true);
     localStorage.setItem('searchQuery', searchQuery);
     fetchMovies(searchQuery, 1);
-    setQuery('');
   };
 
   const loadMore = () => {
@@ -44,10 +42,6 @@ const Home = () => {
   const renderContent = () => {
     if (!hasSearched) {
       return <StyledSearchPrompt>請輸入關鍵字開始搜尋電影</StyledSearchPrompt>;
-    }
-
-    if (isLoading) {
-      return <LoadingSpinner>載入中...</LoadingSpinner>;
     }
 
     return (

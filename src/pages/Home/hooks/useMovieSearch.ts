@@ -6,11 +6,9 @@ export const useMovieSearch = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [hasMore, setHasMore] = useState(false);
   const [error, setError] = useState<Error | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
 
   const fetchMovies = async (searchQuery: string, pageNum: number) => {
     try {
-      setIsLoading(true);
       const { results, total_pages } = await getSearchMovie(
         searchQuery,
         pageNum
@@ -21,10 +19,8 @@ export const useMovieSearch = () => {
     } catch (error) {
       setError(error as Error);
       throw error;
-    } finally {
-      setIsLoading(false);
     }
   };
 
-  return { movies, hasMore, error, isLoading, fetchMovies };
+  return { movies, hasMore, error, fetchMovies };
 };
