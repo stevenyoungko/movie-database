@@ -1,8 +1,10 @@
 import MovieSearch from '../../components/MovieSearch';
 import MovieList from '../../components/MovieList';
+import MovieSort from '../../components/MovieSort';
 import { StyledSearchPrompt } from '../../components/MovieSearch/styled';
 import { useState, useEffect } from 'react';
 import { useMovieSearch } from '../../hooks/useMovieSearch';
+import { useMovieSort } from '../../hooks/useMovieSort';
 import { StyledWatchListLink } from '../WatchList/styled';
 
 const Home = () => {
@@ -10,6 +12,7 @@ const Home = () => {
   const [hasSearched, setHasSearched] = useState(false);
   const [query, setQuery] = useState('');
   const { movies, hasMore, fetchMovies, error } = useMovieSearch();
+  const { sortBy, setSortBy, sortedMovies } = useMovieSort(movies);
 
   useEffect(() => {
     const searchQuery = localStorage.getItem('searchQuery');
@@ -43,7 +46,14 @@ const Home = () => {
       {!hasSearched ? (
         <StyledSearchPrompt>請輸入關鍵字開始搜尋電影</StyledSearchPrompt>
       ) : (
-        <MovieList movies={movies} hasMore={hasMore} loadMore={loadMore} />
+        <>
+          <MovieSort value={sortBy} onChange={setSortBy} />
+          <MovieList
+            movies={sortedMovies}
+            hasMore={hasMore}
+            loadMore={loadMore}
+          />
+        </>
       )}
     </>
   );
