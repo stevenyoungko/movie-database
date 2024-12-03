@@ -12,6 +12,7 @@ import {
 import type { Movie } from '../../types/movie';
 import { StyledHomeLink } from '../Home/styled';
 import { IoMdArrowRoundUp, IoMdArrowRoundDown } from 'react-icons/io';
+import MovieLottery from '../../components/MovieLottery';
 
 const WatchList = () => {
   const [favorites, setFavorites] = useState<Movie[]>([]);
@@ -42,6 +43,7 @@ const WatchList = () => {
         <StyledTitle>我的待看清單</StyledTitle>
         {favorites.length > 0 ? (
           <>
+            <MovieLottery movies={favorites} />
             <StyledSortButton onClick={toggleSortOrder}>
               {sortOrder === 'asc' ? (
                 <>

@@ -125,3 +125,34 @@ export const StyledSortButton = styled.button`
     font-size: 18px;
   }
 `;
+
+export const StyledLotteryButton = styled.button`
+  background-color: #ff6b6b;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 20px 0;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #ff5252;
+  }
+`;
+
+export const StyledLotteryResult = styled.div`
+  background-color: #f8f9fa;
+  padding: 16px;
+  border-radius: 8px;
+  margin: 16px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 18px;
+
+  ${StyledMovieLink} {
+    margin-left: 16px;
+  }
+`;
