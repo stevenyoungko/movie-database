@@ -1,46 +1,63 @@
-# Getting Started with Create React App
+# Movie Database
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+這是一個使用 React 和 TypeScript 建立的電影資料庫網站。
 
-## Available Scripts
+## 技術棧
 
-In the project directory, you can run:
+- React 18
+- TypeScript
+- React Router v6
+- Styled Components
+- Axios
+- React Infinite Scroll Component
+- React Error Boundary
+- React Icons
 
-### `npm start`
+## 開發工具
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- ESLint
+- Prettier
+- Husky
+- Lint Staged
+- Jest (測試框架)
+- React Testing Library
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 功能特點
 
-### `npm test`
+- 無限滾動載入
+- 錯誤邊界處理
+- 響應式設計
+- TypeScript 類型安全
+- 自動化程式碼格式化
+- Git Hooks 前置提交檢查
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 開始使用
 
-### `npm run build`
+### 系統要求
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Node.js 20 或更高版本
+- npm 或 yarn 套件管理器
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 環境設定
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+1. 複製 `.env.example` 到 `.env`：
+2. 在 `.env` 文件中設定您的 REACT_APP_TMDB_API_KEY
+```
 
-### `npm run eject`
+### 開發模式運行
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+yarn install
+yarn start
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+應用程式將在 http://localhost:3000 運行
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### 部署
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+本專案使用 Vercel 進行自動化部署：
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. 每次推送到 `master` 分支時，都會自動觸發部署流程
+2. Vercel 會自動執行建置和部署
+3. 部署完成後可在 Vercel 提供的網址訪問
