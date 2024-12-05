@@ -1,10 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import Detail from './pages/Detail';
-import WatchList from './pages/WatchList';
+import { Suspense, lazy } from 'react';
 import ErrorFallback from './components/ErrorFallback';
 import { ErrorBoundary } from 'react-error-boundary';
 import './App.css';
+
+const Home = lazy(() => import('./pages/Home'));
+const Detail = lazy(() => import('./pages/Detail'));
+const WatchList = lazy(() => import('./pages/WatchList'));
+
+const LoadingFallback = () => <p>載入中...</p>;
 
 function App() {
   return (
@@ -21,11 +25,13 @@ function App() {
               window.location.reload();
             }}
           >
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/movies/:id" element={<Detail />} />
-              <Route path="/watch_list" element={<WatchList />} />
-            </Routes>
+            <Suspense fallback={<LoadingFallback />}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/movies/:id" element={<Detail />} />
+                <Route path="/watch_list" element={<WatchList />} />
+              </Routes>
+            </Suspense>
           </ErrorBoundary>
         </main>
         <footer className="app-footer">
