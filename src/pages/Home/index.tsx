@@ -13,6 +13,7 @@ const Home = () => {
   const [query, setQuery] = useState('');
   const { movies, hasMore, fetchMovies, error } = useMovieSearch();
   const { sortBy, setSortBy, sortedMovies } = useMovieSort(movies);
+  const [isSearching, setIsSearching] = useState(false);
 
   useEffect(() => {
     const searchQuery = localStorage.getItem('searchQuery');
@@ -22,15 +23,13 @@ const Home = () => {
     }
   }, []);
 
-  if (error) {
-    throw error;
-  }
-
-  const handleSearch = (searchQuery: string) => {
+  const handleSearch = async (searchQuery: string) => {
+    setIsSearching(true);
     setPage(1);
     setHasSearched(true);
     localStorage.setItem('searchQuery', searchQuery);
-    fetchMovies(searchQuery, 1);
+    await fetchMovies(searchQuery, 1);
+    setIsSearching(false);
   };
 
   const loadMore = () => {
@@ -40,8 +39,16 @@ const Home = () => {
   };
 
   const renderContent = () => {
+    if (error) {
+      throw error;
+    }
+
     if (!hasSearched) {
       return <StyledSearchPrompt>請輸入關鍵字開始搜尋電影</StyledSearchPrompt>;
+    }
+
+    if (isSearching) {
+      return <StyledSearchPrompt>搜尋中...</StyledSearchPrompt>;
     }
 
     return (

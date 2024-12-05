@@ -18,7 +18,6 @@ export const useMovieSearch = () => {
       setError(null);
     } catch (error) {
       setError(error as Error);
-      throw error;
     }
   };
 
