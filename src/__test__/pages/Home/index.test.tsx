@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import Home from '../../../pages/Home';
 import { mockMovies } from '../../../mocks/movie';
@@ -33,7 +33,7 @@ describe('Home', () => {
     expect(screen.getByText('我的收藏清單')).toBeInTheDocument();
   });
 
-  it('displays movie list after search', () => {
+  it('displays movie list after search', async () => {
     renderHome();
     const searchInput = screen.getByRole('textbox');
     userEvent.type(searchInput, 'venom');
@@ -42,7 +42,11 @@ describe('Home', () => {
     expect(
       screen.queryByText('請輸入關鍵字開始搜尋電影')
     ).not.toBeInTheDocument();
-    expect(screen.getByText('Venom: Let There Be Carnage')).toBeInTheDocument();
-    expect(screen.getByText('Carmen 1945')).toBeInTheDocument();
+    await waitFor(() => {
+      expect(
+        screen.findByText('Venom: Let There Be Carnage')
+      ).resolves.toBeInTheDocument();
+    });
+    expect(screen.findByText('Carmen 1945')).resolves.toBeInTheDocument();
   });
 });
