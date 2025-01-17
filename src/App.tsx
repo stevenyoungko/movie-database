@@ -7,7 +7,9 @@ import './App.css';
 const Home = lazy(() => import('./pages/Home'));
 const Detail = lazy(() => import('./pages/Detail'));
 const WatchList = lazy(() => import('./pages/WatchList'));
-
+const SimpleVirtualizedList = lazy(
+  () => import('./pages/SimpleVirtualizedList')
+);
 const LoadingFallback = () => <p>載入中...</p>;
 
 function App() {
@@ -30,6 +32,10 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/movies/:id" element={<Detail />} />
                 <Route path="/watch_list" element={<WatchList />} />
+                <Route
+                  path="/virtualized_list"
+                  element={<SimpleVirtualizedList />}
+                />
               </Routes>
             </Suspense>
           </ErrorBoundary>
